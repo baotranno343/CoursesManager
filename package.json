@@ -1,0 +1,29 @@
+{
+  "name": "hocnodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baotranno343/hocnodejs.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "PhamGiaBaoTran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baotranno343/hocnodejs/issues"
+  },
+  "homepage": "https://github.com/baotranno343/hocnodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
