@@ -1,0 +1,109 @@
+<form action="/courses/handle-form-actions" method="post">
+  <div class="d-flex justify-center align-items-center">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value="123"
+        id="check-all"
+      />
+      <label>Chọn Tất Cả</label>
+    </div>
+
+    <select
+      style="width:200px"
+      class="form-select"
+      aria-label="Default select example"
+    >
+      <option selected>--Hành Động--</option>
+      <option value="xoa">Xóa</option>
+
+    </select>
+    <button type="submit" class="btn btn-primary">Thực Hiện</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th scope="col">#</th>
+        <th scope="col">Tên Khóa học</th>
+        <th scope="col">Nội Dung</th>
+        <th scope="col">IMG</th>
+        <th scope="col">slug</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each courses}}
+        <tr>
+          <th>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value="{{this._id}}"
+              id="flexCheckDefault"
+              name="courseIds[]"
+            />
+          </th>
+          <th scope="row">{{sum @index 1}}</th>
+          <td>{{this.name}}</td>
+          <td>{{this.des}}</td>
+          <td>{{this.img}}</td>
+          <td>{{this.slug}}</td>
+          <td><a
+              href="/courses/{{this._id}}/edit"
+              class="btn btn-primary"
+            >Sửa</a>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+              data-id={{this._id}}
+            >
+              Xóa
+            </button>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table><!-- Button trigger modal -->
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Xóa Khóa Học</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Bạn có chắc muốn xóa khóa học
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >Close</button>
+          <a id="btn-delete-course" class="btn btn-primary">Xóa</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<form name="delete-course-form" action="" method="post"></form>
+<script src="/js/all.js">
+</script>
