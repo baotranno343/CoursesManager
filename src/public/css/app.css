@@ -1,0 +1,20 @@
+h1 {
+  font-size: 14;
+  background-color: #8fc1b5;
+  color: white; }
+
+header {
+  background-color: #8fc1b5;
+  margin-bottom: 30px; }
+  header ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none; }
+  header ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    color: white; }
+
+footer {
+  margin-top: 30px; }
