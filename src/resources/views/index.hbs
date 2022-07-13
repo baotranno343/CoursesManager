@@ -18,11 +18,11 @@
   {{#each courses}}
     <div class="col-lg-4">
       <div class="card" style="width: 18rem;">
-        <img src="{{this.img}}" class="card-img-top" alt="..." />
+        <img src="uploads/{{this.img}}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">{{this.name}}</h5>
           <p class="card-text">{{this.des}}</p>
-          <a href="/courses/{{this.slug}}" class="btn btn-primary">Go somewhere</a>
+          <a href="/courses/{{this.slug}}" class="btn btn-success">Go somewhere</a>
         </div>
       </div>
     </div>

@@ -8,6 +8,10 @@ const route = require("./routes");
 const db = require("./config/db/");
 const { debugPort } = require("process");
 const session = require("express-session");
+const http = require("http");
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 db.connect();
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
@@ -41,7 +45,26 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
 route(app);
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+io.emit("some event", {
+  someProperty: "some value",
+  otherProperty: "other value",
+}); // This will emit the event to all connected sockets
+io.on("connection", (socket) => {
+  console.log("a user connected");
+  io.emit("chat message", "a user connected");
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
+  socket.on("username", (msg) => {
+    io.emit("username", msg);
+  });
+  // socket.on("disconnect", () => {
+  //   console.log("user disconnected");
+  // });
 });
+server.listen(3001, () => {
+  console.log("listening on *:3001");
+});
+// app.listen(port, () => {
+//   console.log(`Example app listening at http://localhost:${port}`);
+// });

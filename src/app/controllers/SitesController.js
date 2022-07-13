@@ -2,23 +2,19 @@ const { response } = require("express");
 const Course = require("../models/Course");
 const { mutipleMongooseToObject } = require("../../util/mongoose");
 class SitesController {
-  index(req, res, next) {
-    // Course.find({}, function (err, courses) {
-    //   if (!err) {
-    //     res.json(courses);
-    //   } else {
-    //     next(err);
-    //   }
-    // });
-    Course.find({})
-      .then((courses) => {
-        res.render("index", { courses: mutipleMongooseToObject(courses) });
-      })
-      .catch(next);
+  async index(req, res, next) {
+    try {
+      console.log(req.session.user);
+      const courses = await Course.find({});
+      res.render("index", { courses: mutipleMongooseToObject(courses) });
+    } catch (err) {
+      console.error(err);
+      res.send("Something went wrong");
+    }
   }
-  show(req, res) {
-    res.send("Index DETAIL");
-  }
+  // show(req, res) {
+  //   res.send("Index DETAIL");
+  // }
 }
 
 module.exports = new SitesController();

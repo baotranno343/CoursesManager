@@ -1,4 +1,13 @@
+<a href="/courses/{{course.slug}}/lesson/create">
+  <button type="button" class="btn btn-success">Thêm Bài Học</button>
+</a>
 <p>Name:{{course.name}} </p>
+
 <p>des:{{course.des}} </p>
-<p>img: <img src="/uploads/{{course.img}}" alt=""></p>
+<p>img: <img src="/uploads/{{course.img}}" alt="" /></p>
 <p>slug:{{course.slug}} </p>
+{{#each lesson}}
+  Lesson:
+  <a href="/courses/{{this.slug_course}}/lesson/{{this._id}}">
+    {{this.name}}</a>
+{{/each}}

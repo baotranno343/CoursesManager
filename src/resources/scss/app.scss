@@ -1,5 +1,24 @@
 @import "variables";
 h1 {
   font-size: 14;
-  background-color: $red-color;
+  background-color: $background-color;
+  color: $text-color;
+}
+header {
+  background-color: $background-color;
+  margin-bottom: 30px;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+  }
+  ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    color: $text-color;
+  }
+}
+footer {
+  margin-top: 30px;
 }
